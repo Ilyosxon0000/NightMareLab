@@ -1,11 +1,16 @@
+from collections.abc import Iterable
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth import get_user_model
 # Create your models here.
+class UserType(models.Model):
+    title=models.CharField(max_length=255)
+    slug=models.SlugField()#HARDCODE
 
 class UserProfile(AbstractBaseUser):
     image=models.FileField(upload_to="users/%y/%m/%d/",blank=True,null=True)
     middle_name=models.CharField(max_length=255,blank=True,null=True)
+    type=models.ForeignKey(UserType,related_name="users",on_delete=models.CASCADE)
 
     @property
     def owner_animations(self):
@@ -17,8 +22,7 @@ class UserProfile(AbstractBaseUser):
     def user_animations(self):
         if hasattr(self,'my_animations'):
             return self.my_animations
-        return None       
-    
+        return None
 
 class Category(models.Model):
     title=models.CharField(max_length=255)
@@ -41,7 +45,8 @@ class BodyCategory(models.Model):
 
 class Animation(models.Model):
     name=models.CharField(max_length=255)
-    file=models.FileField(upload_to="animations/file/%y/%m/%d/")
+    file30=models.FileField(upload_to="animations/file/%y/%m/%d/")
+    file60=models.FileField(upload_to="animations/file/%y/%m/%d/")
     tag=models.ForeignKey(Tag,related_name="animations",on_delete=models.CASCADE)
     price=models.IntegerField(default=0)
     preview=models.FileField(upload_to="animations/preview/%y/%m/%d/")
@@ -52,7 +57,7 @@ class Animation(models.Model):
 class Payment(models.Model):
     TYPE_PAYMENT=(
         ("TO_COMPANY","TO_COMPANY"),
-        ("TO_USER","TO_USER"),
+        ("TO_OWNER","TO_OWNER"),
     )
     user=models.ForeignKey(get_user_model(),related_name="my_animations",on_delete=models.PROTECT)
     type_pay=models.CharField(max_length=255,choices=TYPE_PAYMENT,default="TO_COMPANY")
@@ -60,4 +65,18 @@ class Payment(models.Model):
     amount=models.IntegerField(default=0)
     date_paid=models.DateTimeField(auto_now_add=True)
 
-# TODO
+    def save(self,*args,**kwargs):
+        if self.animation.owner:
+            self.type_pay="TO_OWNER"
+        return super().save(*args,**kwargs)
+
+class RequestType(models.Model):
+    title=models.CharField(max_length=255)
+    slug=models.SlugField()
+
+class Request(models.Model):
+    user=models.ForeignKey(get_user_model(),related_name="requests",on_delete=models.PROTECT)
+    title=models.CharField(max_length=255)
+    body=models.TextField()
+    type=models.ForeignKey(RequestType,related_name="requests",on_delete=models.CASCADE)
+    date=models.DateTimeField(auto_now_add=True)
