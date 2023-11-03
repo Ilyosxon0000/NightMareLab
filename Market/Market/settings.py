@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-hm_nt6%=oizx#d5u_4v!2fd4xueg&f7&%m$hsl%06+j+o2=5&+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     #local
+    'user',
     'webapp'
 ]
 
