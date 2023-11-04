@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from product import models
+from product.models import Animation
 
 class Payment(models.Model):
     TYPE_PAYMENT=(
@@ -9,7 +9,7 @@ class Payment(models.Model):
     )
     user=models.ForeignKey(get_user_model(),related_name="my_animations",on_delete=models.PROTECT)
     type_pay=models.CharField(max_length=255,choices=TYPE_PAYMENT,default="TO_COMPANY")
-    animation=models.ForeignKey(models.Animation,related_name="users_animations",on_delete=models.PROTECT)
+    animation=models.ForeignKey(Animation,related_name="users_animations",on_delete=models.PROTECT)
     amount=models.IntegerField(default=0)
     date_paid=models.DateTimeField(auto_now_add=True)
 

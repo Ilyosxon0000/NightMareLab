@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'rest_framework',
 
     #local
+    'webapp',
     'user',
-    'webapp'
+    'product',
+    'finance',
+    'company',
 ]
 
 MIDDLEWARE = [
