@@ -1,3 +1,4 @@
+from collections.abc import Iterable
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -30,3 +31,9 @@ class Animation(models.Model):
     owner=models.ForeignKey(get_user_model(),related_name="my_owner_animations",on_delete=models.PROTECT,blank=True,null=True)
     downloads=models.IntegerField(default=0)
     body_category=models.ForeignKey(BodyCategory,related_name="animations",on_delete=models.CASCADE)
+
+    def save(self,*args,**kwargs):
+        if self.owner:
+            self.owner.is_staff=True
+            self.owner.save()
+        return super().save(*args,**kwargs)

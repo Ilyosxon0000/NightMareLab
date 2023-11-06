@@ -1,0 +1,88 @@
+{
+  "todotree": {
+    "tree": [
+      {
+        "key": 1699250372755,
+        "children": [
+          {
+            "key": 1699250384426,
+            "children": [],
+            "todo": {
+              "content": "SIGN UP",
+              "id": 1699250384426,
+              "level": "default",
+              "done": false,
+              "start": 1699250384426
+            }
+          },
+          {
+            "key": 1699250411145,
+            "children": [],
+            "todo": {
+              "content": "SIGN IN",
+              "id": 1699250411145,
+              "level": "default",
+              "done": false,
+              "start": 1699250411145
+            }
+          },
+          {
+            "key": 1699250452360,
+            "children": [],
+            "todo": {
+              "content": "EMAIL CHECK",
+              "id": 1699250452360,
+              "level": "default",
+              "done": false,
+              "start": 1699250452361
+            }
+          }
+        ],
+        "todo": {
+          "content": "AUTH",
+          "id": 1699250372755,
+          "level": "default",
+          "done": false,
+          "start": 1699250372755
+        }
+      },
+      {
+        "key": 1699250418665,
+        "children": [],
+        "todo": {
+          "content": "PAYMENT",
+          "id": 1699250418665,
+          "level": "default",
+          "done": false,
+          "start": 1699250418665
+        }
+      },
+      {
+        "key": 1699250429489,
+        "children": [],
+        "todo": {
+          "content": "SECURITY ANIMATION",
+          "id": 1699250429489,
+          "level": "default",
+          "done": false,
+          "start": 1699250429489
+        }
+      }
+    ],
+    "expandKeys": [
+      1699250372755,
+      1699250384426
+    ],
+    "schema": "https://github.com/Saber2pr/vsc-ext-todolist/blob/master/src/api/type.ts#L3",
+    "add_mode": "bottom",
+    "virtual": false,
+    "showLine": false,
+    "playFontSize": 24,
+    "title": ".todo",
+    "autoSort": false,
+    "showEndTime": false,
+    "simpleMode": false,
+    "lang": "en",
+    "version": "1699250463254"
+  }
+}

@@ -1,24 +1,30 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AbstractUser
 
-class UserType(models.Model):
-    title=models.CharField(max_length=255)
-    slug=models.SlugField()#HARDCODE
-
-class UserProfile(AbstractBaseUser):
+class UserProfile(AbstractUser):
+    USER_TYPE=()
     image=models.FileField(upload_to="users/%y/%m/%d/",blank=True,null=True)
     middle_name=models.CharField(max_length=255,blank=True,null=True)
-    type=models.ForeignKey(UserType,related_name="users",on_delete=models.CASCADE)
+
+    @property
+    def type_user(self):
+        type=""
+        if self.is_superuser:
+            type="admin"
+        elif self.is_staff:
+            type="seller"
+        else:
+            type="user"
+        return type
 
     @property
     def owner_animations(self):
-        if hasattr(self,'my_owner_animations'):
-            return self.my_owner_animations
+        if len(self.my_owner_animations.all()):
+            return self.my_owner_animations.all()
         return None
     
     @property
     def user_animations(self):
-        if hasattr(self,'my_animations'):
-            return self.my_animations
+        if len(self.my_animations.all()):
+            return self.my_animations.all()
         return None

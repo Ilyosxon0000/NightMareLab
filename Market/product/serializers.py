@@ -22,7 +22,6 @@ class TagSerializer(serializers.ModelSerializer):
         if request.method=="GET":
             self.fields['category']=CategorySerializer()
     
-
 class BodyCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.BodyCategory
