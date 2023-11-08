@@ -78,11 +78,44 @@
           "done": false,
           "start": 1699354451436
         }
+      },
+      {
+        "key": 1699366083423,
+        "children": [],
+        "todo": {
+          "content": "Public and Private Media",
+          "id": 1699366083423,
+          "level": "default",
+          "done": false,
+          "start": 1699366083423
+        }
+      },
+      {
+        "key": 1699366599743,
+        "children": [],
+        "todo": {
+          "content": "Postman",
+          "id": 1699366599743,
+          "level": "default",
+          "done": false,
+          "start": 1699366599743
+        }
+      },
+      {
+        "key": 1699366604918,
+        "children": [],
+        "todo": {
+          "content": "Project Management",
+          "id": 1699366604918,
+          "level": "default",
+          "done": false,
+          "start": 1699366604918
+        }
       }
     ],
     "expandKeys": [
-      1699250372755,
-      1699250384426
+      1699250384426,
+      1699250372755
     ],
     "schema": "https://github.com/Saber2pr/vsc-ext-todolist/blob/master/src/api/type.ts#L3",
     "add_mode": "bottom",
@@ -94,6 +127,6 @@
     "showEndTime": false,
     "simpleMode": false,
     "lang": "en",
-    "version": "1699354458700"
+    "version": "1699366736287"
   }
 }

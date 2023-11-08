@@ -30,7 +30,8 @@ def serve(request, path, document_root=None, show_indexes=False):
     but if you'd like to override it, you can create a template called
     ``static/directory_index.html``.
     """
-    print(request)
+    print("request:",request,"path:",path,"document_root:",document_root,"show_indexes:",show_indexes)
+    # TODO public private
     path = posixpath.normpath(path).lstrip("/")
     fullpath = Path(safe_join(document_root, path))
     if fullpath.is_dir():

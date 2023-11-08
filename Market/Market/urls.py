@@ -12,4 +12,4 @@ urlpatterns = [
     path('api/v1/',include('company.urls')),
 ]+static(settings.MEDIA_URL,serve,document_root=settings.MEDIA_ROOT)
 
-from django.core.files.storage import Storage
+# from django.core.files.storage import Storage
